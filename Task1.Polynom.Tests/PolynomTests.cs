@@ -12,31 +12,31 @@ namespace Task1.Polynom.Tests
         public void Test_GetCoefficients()
         {
             double[] coefficients = new double[] { 1, 2, 3, 4, 5 };
-            Polynom a = new Polynom(coefficients);
+            Polynom polynom = new Polynom(coefficients);
 
             IStructuralEquatable coeff = coefficients;
-            Assert.IsTrue(coeff.Equals(a.GetCoefficients(), StructuralComparisons.StructuralEqualityComparer));
+            Assert.IsTrue(coeff.Equals(polynom.GetCoefficients(), StructuralComparisons.StructuralEqualityComparer));
         }
 
         [TestMethod]
         public void Constructor_WithoutParameters_0()
         {
-            Polynom a = new Polynom();
+            Polynom polynom = new Polynom();
 
             double[] expected = new double[] { 0 };
 
-            IStructuralEquatable actual = a.GetCoefficients();
+            IStructuralEquatable actual = polynom.GetCoefficients();
             Assert.IsTrue(actual.Equals(expected, StructuralComparisons.StructuralEqualityComparer));
         }
 
         [TestMethod]
         public void Constructor_Coefficietn2Degree5_MonomialDgree5()
         {
-            Polynom a = new Polynom(2, 5);
+            Polynom polynom = new Polynom(2, 5);
 
             double[] expected = new double[] { 0, 0, 0, 0, 0, 2 };
 
-            IStructuralEquatable actual = a.GetCoefficients();
+            IStructuralEquatable actual = polynom.GetCoefficients();
             Assert.IsTrue(actual.Equals(expected, StructuralComparisons.StructuralEqualityComparer));
         }
 
@@ -45,10 +45,10 @@ namespace Task1.Polynom.Tests
         {
              double[] coefficients = new double[] { 1, 2, 3, 4, 5 };
              double x = 2;
-             Polynom a = new Polynom(coefficients);
+             Polynom polynom = new Polynom(coefficients);
 
              double expected = 129;
-             double actual = a.SubstituteVariableValue(x);
+             double actual = polynom.SubstituteVariableValue(x);
 
              Assert.AreEqual(expected, actual);
         }
@@ -182,10 +182,10 @@ namespace Task1.Polynom.Tests
         public void Multiply_PolynomBy2_DoubledCoefficients()
         {
             double[] coefficients = new double[] { 1, 2, 3, 4, 5 };
-            Polynom a = new Polynom(coefficients);
+            Polynom polynom = new Polynom(coefficients);
 
             double[] expected = new double[] { 2, 4, 6, 8, 10 };
-            IStructuralEquatable actual = (a * 2).GetCoefficients();
+            IStructuralEquatable actual = (polynom * 2).GetCoefficients();
 
             Assert.IsTrue(actual.Equals(expected, StructuralComparisons.StructuralEqualityComparer));
         }
@@ -194,10 +194,10 @@ namespace Task1.Polynom.Tests
         public void Multiply_PolynomByMinus1_InvertedSignsCoefficients()
         {
             double[] coefficients = new double[] { 1, 2, 3, 4, 5 };
-            Polynom a = new Polynom(coefficients);
+            Polynom polynom = new Polynom(coefficients);
 
             double[] expected = new double[] { -1, -2, -3, -4, -5 };
-            IStructuralEquatable actual = (a * (-1)).GetCoefficients();
+            IStructuralEquatable actual = (polynom * (-1)).GetCoefficients();
 
             Assert.IsTrue(actual.Equals(expected, StructuralComparisons.StructuralEqualityComparer));
         }
